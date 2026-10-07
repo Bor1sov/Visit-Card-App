@@ -5,8 +5,8 @@ import { Profile } from "./profile.model.js";
 @Resolver()
 export class ProfileResolver {
     constructor(private readonly profileService:ProfileService){}
-    @Query(() => Profile)
-    profile():Profile {
+    @Query(() => Profile, {nullable: true})
+    profile():Promise<Profile | null> {
         return this.profileService.getProfile();
     }
 }

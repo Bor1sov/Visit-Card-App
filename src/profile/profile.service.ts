@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { Profile } from './profile.model.js';
+import { PrismaService } from '../prisma/prisma.service.js';
 
 @Injectable()
 export class ProfileService {
-  getProfile(): Profile {
-    return {name:'Egor',role:'Admin',about:'Chelik'}
+  constructor(private readonly prisma: PrismaService) {}
+  getProfile(){
+    return this.prisma.profile.findFirst();
   }
 }
