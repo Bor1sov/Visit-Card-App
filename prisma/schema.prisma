@@ -11,7 +11,7 @@ model Profile {
     id    Int    @id @default(autoincrement())
     name  String
     description String
-    github String
+    github String @unique
     linkedin String?
     skills Skill[]
     experiences Experience[]

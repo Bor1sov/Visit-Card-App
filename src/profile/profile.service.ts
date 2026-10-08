@@ -5,6 +5,10 @@ import { PrismaService } from '../prisma/prisma.service.js';
 export class ProfileService {
   constructor(private readonly prisma: PrismaService) {}
   getProfile(){
-    return this.prisma.profile.findFirst();
+    return this.prisma.profile.findFirst({include:{
+        skills:true,
+        experiences:true,
+        projects:true
+    }});
   }
 }

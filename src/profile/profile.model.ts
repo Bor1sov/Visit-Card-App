@@ -10,11 +10,17 @@ export class Profile {
     github:string;
     @Field(() => String, { nullable: true })
     linkedin: string | null;
+    @Field(() => [Skill])
+    skills: Skill[]
+    @Field(() => [Experience])
+    experiences: Experience[]
+    @Field(() => [Project])
+    projects: Project[]
 }
 @ObjectType()
 export class Skill {
     @Field()
-    title: string;
+    name: string;
 }
 @ObjectType()
 export class Experience {
@@ -23,7 +29,9 @@ export class Experience {
     @Field()
     position: string;
     @Field()
-    period: string;
+    startDate: Date;
+    @Field(()=> Date, { nullable: true })
+    endDate: Date | null;
     @Field()
     achievements: string;
 }
@@ -31,7 +39,7 @@ export class Experience {
 @ObjectType()
 export class Project {
     @Field()
-    title: string;
+    name: string;
     @Field()
     link: string;
 }
