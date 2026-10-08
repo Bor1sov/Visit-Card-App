@@ -5,7 +5,34 @@ export class Profile {
     @Field()
     name: string;
     @Field()
-    role: string;
+    description: string;
     @Field()
-    about:string;
+    github:string;
+    @Field(() => String, { nullable: true })
+    linkedin: string | null;
 }
+@ObjectType()
+export class Skill {
+    @Field()
+    title: string;
+}
+@ObjectType()
+export class Experience {
+    @Field()
+    company: string;
+    @Field()
+    position: string;
+    @Field()
+    period: string;
+    @Field()
+    achievements: string;
+}
+
+@ObjectType()
+export class Project {
+    @Field()
+    title: string;
+    @Field()
+    link: string;
+}
+
