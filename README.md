@@ -98,6 +98,10 @@ Profile
 └── Projects
 ```
 
+Открыть Apollo Sandbox можно по адресу:
+
+`https://bor1sov-visit-card-app-6923.twc1.net/graphql`
+
 ## Структура проекта
 
 ```text
@@ -182,3 +186,27 @@ docker compose down
 ```bash
 docker compose down -v
 ```
+
+## Развёрнутое приложение
+
+Backend развёрнут в Timeweb Cloud и доступен публично.
+
+- Корневой endpoint: `https://bor1sov-visit-card-app-6923.twc1.net/`
+- GraphQL API / Apollo Sandbox: `https://bor1sov-visit-card-app-6923.twc1.net/graphql`
+
+### Маршрутизация
+
+В приложении реализована обработка HTTP-маршрутов:
+
+- `GET /` — возвращает основную информацию о Visit Card API и путь к GraphQL API.
+- `/graphql` — GraphQL API и Apollo Sandbox.
+- Неизвестные маршруты обрабатываются глобальным `NotFoundExceptionFilter` и возвращают HTTP-статус `404` с информативным JSON-ответом.
+
+Пример ответа для неизвестного маршрута:
+
+{
+  "statusCode": 404,
+  "message": "Route not found",
+  "path": "/test",
+  "graphql": "/graphql"
+}
